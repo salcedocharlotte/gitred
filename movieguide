@@ -1,0 +1,84 @@
+#Movie Guide Part 2 assignment
+
+1.	# Charlotte Payan-Salcedo CIS261 Movie Guide Part 2 
+2.	 
+3.	# Create the movie.txt file and write initial titles 
+4.	with open("movie.txt", "w") as file: 
+5.	file.write("Cat on the Hot Tin Roof\nOn The WaterFront\nMonty Python and the Holy Grail\n") 
+6.	 
+7.	# Function to populate the Movie List from a file 
+8.	def populate_list(file_name): 
+9.	movie_list = [] 
+10.	with open(file_name, "r") as file: 
+11.	for line in file: 
+12.	movie_list.append(line.strip()) 
+13.	return movie_list 
+14.	 
+15.	# Function to display the movie list menu 
+16.	def display_menu(): 
+17.	print("\nMovie List Menu") 
+18.	print("list --> Display movie titles.") 
+19.	print("add --> Add a movie title") 
+20.	print("delete --> Delete a movie title") 
+21.	print("exit --> Exit the application") 
+22.	 
+23.	# Function to display titles of movies 
+24.	def display_titles(movie_list): 
+25.	print("\nMovie Titles:") 
+26.	for idx, title in enumerate(movie_list, start=1): 
+27.	print(f"{idx}. {title}") 
+28.	 
+29.	# Function to add a movie title 
+30.	def add_title(movie_list, title, file_name): 
+31.	movie_list.append(title) 
+32.	with open(file_name, "a") as file: 
+33.	file.write(title + "\n") 
+34.	print(f"\n{title} has been added to the list") 
+35.	 
+36.	# Function to delete a movie title 
+37.	def delete_title(movie_list, index, file_name): 
+38.	if 1 <= index <= len(movie_list): 
+39.	deleted_title = movie_list.pop(index - 1) 
+40.	with open(file_name, "w") as file: 
+41.	file.write("\n".join(movie_list)) 
+42.	print(f"\n{deleted_title} has been deleted from the list") 
+43.	else: 
+44.	print("\nInvalid index number. No movie was deleted") 
+45.	 
+46.	# Main function to control the program 
+47.	def main(): 
+48.	movie_file = "movie.txt" 
+49.	movie_list = populate_list(movie_file) 
+50.	 
+51.	while True: 
+52.	display_menu() 
+53.	choice = input("Enter your choice: ") 
+54.	 
+55.	if choice.lower() == "list": 
+56.	display_titles(movie_list) 
+57.	elif choice.lower() == "add": 
+58.	new_title = input("Enter the new Movie title: ") 
+59.	add_title(movie_list, new_title, movie_file) 
+60.	elif choice.lower() == "delete": 
+61.	display_titles(movie_list) 
+62.	try: 
+63.	index = int(input("Enter the number of the movie title you would like to delete: ")) 
+64.	delete_title(movie_list, index, movie_file) 
+65.	except ValueError: 
+66.	print("\nInvalid input. Please enter a valid number.") 
+67.	elif choice.lower() == "exit": 
+68.	print("Exiting the program") 
+69.	break 
+70.	else: 
+71.	print("Invalid choice, please try again") 
+72.	 
+73.	 
+74.	if __name__ == "__main__": 
+75.	main()
+  
+The challenges and what I have learned summary:
+
+I had many challenges with this project the initial write to movies.txt brought me many errors and indentation errors. It took me forever to fix these issues only to come across an issue with deleting a movie, my code would not allow me to just use the name of the movie it wanted the number instead, so I fixed that issue.  This was a long and tedious project.  
+
+Every time we create these projects “writing code” it doesn’t show how the code is applied in a real world setting for example where could I use this movie guide, how could I use python in the real world that is what I think is missing from this course. 
+
